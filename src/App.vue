@@ -33,7 +33,7 @@ import VideoComponent from './components/VideoComponent.vue'
   margin: 0;
   padding: 0;
   background-image: linear-gradient(
-    100deg,
+    -80deg,
     #bbffff 0,
     #a2fdfc 12.5%,
     #83f2f9 25%,
