@@ -3,9 +3,9 @@
     <div class="footer-links">
       <a href="#">Terms</a>
       <a href="#">Privacy</a>
-      <a href="#">Contact INGENIACORE support</a>
+      <a href="#">Contact Ingeniacore support</a>
       <a href="#">Manage cookies</a>
-      <a href="#">INGENIACORE SITE</a>
+      <a href="#">Iingeniacore site</a>
     </div>
     <p>&copy; 2025 INGENIACORE. All rights reserved.</p>
   </footer>
@@ -17,10 +17,6 @@
   padding: 1.5rem;
   text-align: center;
   width: 100%;
-}
-
-.footer-links {
-  margin-bottom: 1rem;
 }
 
 .footer-links a {
