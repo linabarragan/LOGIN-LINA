@@ -53,21 +53,21 @@ import VideoComponent from './components/VideoComponent.vue'
 .section {
   display: flex;
   flex-direction: row;
-  flex-grow: 1; /* Asegura que la sección ocupe el espacio restante */
+  flex-grow: 1;
 }
 
 .vistas {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1; /* Asegura que ocupe el espacio disponible */
+  flex: 1;
 }
 
 .video {
-  flex: 1; /* Asegura que ocupe el espacio disponible */
+  flex: 1;
 }
 
 .footer {
-  height: 15vh; /* Ajusta la altura según sea necesario */
+  height: 15vh;
 }
 </style>
