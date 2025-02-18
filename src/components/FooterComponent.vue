@@ -5,7 +5,7 @@
       <a href="#">Privacy</a>
       <a href="#">Contact Ingeniacore support</a>
       <a href="#">Manage cookies</a>
-      <a href="#">Iingeniacore site</a>
+      <a href="#">Ingeniacore site</a>
     </div>
     <p>&copy; 2025 INGENIACORE. All rights reserved.</p>
   </footer>
