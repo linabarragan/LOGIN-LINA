@@ -4,7 +4,7 @@
     <nav>
       <ul>
         <li>
-          <router-link to="/start">🏠 Inicio</router-link>
+          <router-link to="/dashboard">🏠 Inicio</router-link>
         </li>
         <li>
           <router-link to="/profile">Perfil</router-link>

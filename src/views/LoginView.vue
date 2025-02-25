@@ -12,7 +12,7 @@ export default defineComponent({
     const login = () => {
       if (username.value && password.value) {
         console.log('Inicio de sesión exitoso')
-        router.push('/start')
+        router.push('/dashboard')
       } else {
         alert('Por favor, ingresa usuario y contraseña')
       }

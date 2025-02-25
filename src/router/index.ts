@@ -2,10 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import RestPasswordView from '@/views/RestPasswordView.vue'
-import WireFrame from '@/layout/WireFrame.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import SettingView from '@/views/SettingView.vue'
-import StartView from '@/views/StartView.vue'
+import DashboardView from '@/views/DashboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,7 +34,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: WireFrame,
+      component: DashboardView,
       meta: { layout: 'WireFrame' },
     },
 
@@ -51,11 +50,10 @@ const router = createRouter({
       component: SettingView,
       meta: { layout: 'WireFrame' },
     },
+
     {
-      path: '/start',
-      name: 'start',
-      component: StartView,
-      meta: { layout: 'WireFrame' },
+      path: '/:pathMatch(.*)*',
+      redirect: '/login',
     },
   ],
 })
