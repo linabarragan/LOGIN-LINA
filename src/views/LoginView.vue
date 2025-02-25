@@ -1,15 +1,27 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'LoginView',
   setup() {
     const username = ref('')
     const password = ref('')
+    const router = useRouter()
+
+    const login = () => {
+      if (username.value && password.value) {
+        console.log('Inicio de sesión exitoso')
+        router.push('/dashboard')
+      } else {
+        alert('Por favor, ingresa usuario y contraseña')
+      }
+    }
 
     return {
       username,
       password,
+      login,
     }
   },
 })
@@ -18,7 +30,7 @@ export default defineComponent({
 <template>
   <div class="login-view">
     <h2>Sign in</h2>
-    <form>
+    <form @submit.prevent="login">
       <div class="input-group">
         <label for="username">Usuario</label>
         <input id="username" v-model="username" type="text" placeholder="Ingresa tu usuario" />
