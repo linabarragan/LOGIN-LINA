@@ -1,36 +1,32 @@
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useRouter } from 'vue-router'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useAuthStore } from '@/services/AuthStore'
 
-export default defineComponent({
-  name: 'LoginView',
-  setup() {
-    const username = ref('')
-    const password = ref('')
-    const router = useRouter()
+const authStore = useAuthStore()
+const username = ref('')
+const password = ref('')
 
-    const login = () => {
-      if (username.value && password.value) {
-        console.log('Inicio de sesión exitoso')
-        router.push('/dashboard')
-      } else {
-        alert('Por favor, ingresa usuario y contraseña')
-      }
+const handleLogin = async () => {
+  if (!username.value || !password.value) {
+    alert('⚠️ Todos los campos son obligatorios.')
+    return
+  }
+
+  try {
+    const success = await authStore.login({ email: username.value, password: password.value })
+    if (!success) {
+      alert('❌ Usuario o contraseña incorrectos.')
     }
-
-    return {
-      username,
-      password,
-      login,
-    }
-  },
-})
+  } catch {
+    alert('🚨 Ocurrió un error inesperado. Inténtalo de nuevo.')
+  }
+}
 </script>
 
 <template>
   <div class="login-view">
     <h2>Sign in</h2>
-    <form @submit.prevent="login">
+    <form @submit.prevent="handleLogin">
       <div class="input-group">
         <label for="username">Usuario</label>
         <input id="username" v-model="username" type="text" placeholder="Ingresa tu usuario" />

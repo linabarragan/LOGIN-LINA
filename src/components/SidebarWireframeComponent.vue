@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { useAuthStore } from '@/services/AuthStore'
+
+const authStore = useAuthStore()
+
+const handleLogout = () => {
+  authStore.logout()
+}
+</script>
+
 <template>
   <aside class="sidebar">
     <div class="logo">Mi Dashboard</div>
@@ -13,23 +23,12 @@
           <router-link to="/settings">Configuración</router-link>
         </li>
         <li>
-          <button @click="logout">🚪 Cerrar sesión</button>
+          <button @click="handleLogout">🚪 Cerrar sesión</button>
         </li>
       </ul>
     </nav>
   </aside>
 </template>
-
-<script setup lang="ts">
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const logout = () => {
-  console.log('Cerrando sesión...')
-  router.push('/login')
-}
-</script>
 
 <style scoped>
 .sidebar {
