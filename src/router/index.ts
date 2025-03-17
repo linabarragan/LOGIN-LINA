@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/services/AuthStore'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import RestPasswordView from '@/views/RestPasswordView.vue'
@@ -35,27 +36,43 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
-      meta: { layout: 'WireFrame' },
+      meta: { layout: 'WireFrame', requiresAuth: true },
     },
-
     {
       path: '/profile',
       name: 'profile',
       component: ProfileView,
-      meta: { layout: 'WireFrame' },
+      meta: { layout: 'WireFrame', requiresAuth: true },
     },
     {
       path: '/settings',
       name: 'settings',
       component: SettingView,
-      meta: { layout: 'WireFrame' },
+      meta: { layout: 'WireFrame', requiresAuth: true },
     },
-
     {
       path: '/:pathMatch(.*)*',
       redirect: '/login',
     },
   ],
+})
+
+// Guardia de navegación para proteger rutas
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore()
+  const publicRoutes = ['/login', '/register', '/rest-password'] // Definir rutas públicas
+
+  // Bloquear acceso a rutas públicas si el usuario está autenticado
+  if (authStore.isAuthenticated() && publicRoutes.includes(to.path)) {
+    return next('/dashboard') // Redirigir al usuario autenticado
+  }
+
+  // Verificar si la ruta requiere autenticación
+  if (to.meta.requiresAuth && !authStore.isAuthenticated()) {
+    return next('/login') // Redirigir a /login si no está autenticado
+  }
+
+  next() // Permitir la navegación normal
 })
 
 export default router

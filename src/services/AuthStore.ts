@@ -16,9 +16,11 @@ export const useAuthStore = defineStore('auth', {
         const mockUser = { id: 1, name: 'Usuario Demo', email: userData.email }
         const mockToken = 'fake-jwt-token'
 
+        //Actualizar
         this.user = mockUser
         this.token = mockToken
 
+        //Almacenar
         localStorage.setItem('user', JSON.stringify(mockUser))
         localStorage.setItem('token', mockToken)
 
@@ -30,8 +32,11 @@ export const useAuthStore = defineStore('auth', {
     },
 
     logout() {
+      //restablece
       this.user = null
       this.token = null
+
+      //elimina
       localStorage.removeItem('user')
       localStorage.removeItem('token')
 
@@ -39,6 +44,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     isAuthenticated() {
+      console.log('Auth status:', !!this.token) // Depuración
       return !!this.token
     },
   },
